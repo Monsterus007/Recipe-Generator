@@ -215,17 +215,3 @@ plt.title('Residual Plot')
 plt.axhline(y=0, color='r', linestyle='--')
 plt.show()
 
-"""# Interpret MAPE as a form of accuracy"""
-
-def mean_absolute_percentage_error(y_true, y_pred):
-    y_true, y_pred = np.array(y_true), np.array(y_pred)
-    non_zero = y_true != 0  # To avoid division by zero
-    return np.mean(np.abs((y_true[non_zero] - y_pred[non_zero]) / y_true[non_zero])) * 100
-
-# Now you can use the function without the NameError
-mape = mean_absolute_percentage_error(y_test, y_pred)
-print(f"Mean Absolute Percentage Error (MAPE): {mape:.2f}%")
-
-
-accuracy_percentage = 100 - mape
-print(f"Accuracy: {accuracy_percentage:.2f}%")
